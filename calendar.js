@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function generateTitle() {
     const calendarTitle = document.getElementById('calendar-title');
+    const year = new Date().getFullYear();
 
     // TODO: 
-    // - get and print current year
+    // ✅ get and print current year
 
-    calendarTitle.textContent = "One Page Calendar - 2024";
+    calendarTitle.textContent = "One Page Calendar - " + year;
 }
 
 function generateMain() {
