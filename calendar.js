@@ -33,7 +33,7 @@ function generateTableBody(year) {
         let row = document.createElement('tr');
         for (let month = 1; month <= 12; month++) {
             let dayCell = generateDayCell(year, month, day);
-            row.appendChild(dayCell)
+            row.appendChild(dayCell);
         }
         tableBody.appendChild(row);
     }
