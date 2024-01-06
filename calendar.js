@@ -1,5 +1,3 @@
-const year = new Date().getFullYear();
-
 document.addEventListener('DOMContentLoaded', function() {
     generateTitle();
     generateMain();
@@ -7,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function generateTitle() {
     const calendarTitle = document.getElementById('calendar-title');
+    const year = new Date().getFullYear();
 
     // TODO: 
     // ✅ get and print current year
@@ -16,6 +15,7 @@ function generateTitle() {
 
 function generateMain() {
     const calendarMain = document.getElementById('calendar-table');
+    const year = new Date().getFullYear();
 
     // TODO: 
     // ✅ generate the table
@@ -24,7 +24,7 @@ function generateMain() {
 
     let calendarTable = document.createElement('table');
     let tableHeader = generateHeadings();
-    let tableBody = generateDays();
+    let tableBody = generateTableBody(year);
 
     calendarTable.appendChild(tableHeader);
     calendarTable.appendChild(tableBody);
@@ -43,7 +43,7 @@ function generateHeadings() {
     return tableHeader;
 }
 
-function generateDays() {
+function generateTableBody(year) {
     // - generate tbody
     // - generate 31 rows 
     // - generate 12 day cells in each row
@@ -54,21 +54,33 @@ function generateDays() {
     for (let day = 1; day <= 31; day++) {
         let row = document.createElement('tr');
         for (let month = 1; month <= 12; month++) {
-            let dayCell = document.createElement('td');
-
-            // Determine the last day of the month
-            let lastDay = new Date(year, month, 0).getDate();
-
-            if (day <= lastDay) {
-                dayCell.textContent = day;
-            } else {
-                dayCell.textContent = '';
-            }
-
+            let dayCell = generateDayCell(year, month, day);
             row.appendChild(dayCell)
         }
         tableBody.appendChild(row);
     }
 
     return tableBody;
+}
+
+function generateDayCell(year, month, day) {
+    let dayCell = document.createElement('td');
+
+    // Determine the last day of the month
+    let lastDay = new Date(year, month, 0).getDate();
+
+    if (day <= lastDay) {
+        dayCell.textContent = day;
+
+        let date = new Date(year, month - 1, day);
+        let dayOfWeek = date.getDay();
+
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+            dayCell.classList.add('weekend');
+        }
+    } else {
+        dayCell.textContent = '';
+    }
+
+    return dayCell;
 }
