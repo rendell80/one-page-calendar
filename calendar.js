@@ -22,11 +22,10 @@ function generateMain() {
     // - generate individual days under each month 
 
     let calendarTable = document.createElement('table');
-    let tableHeader = document.createElement('thead');
     let tableBody = document.createElement('tbody');
 
-    tableHeader.innerHTML = generateHeadings();
     tableBody.innerHTML = '<tr><td>Calendar Table Body</td></tr>'
+    let tableHeader = generateHeadings();
 
     calendarTable.appendChild(tableHeader);
     calendarTable.appendChild(tableBody);
@@ -34,6 +33,13 @@ function generateMain() {
 }
 
 function generateHeadings() {
+    // - generate thead
+    // - generate 12 months header
+
+    let tableHeader = document.createElement('thead');
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return '<tr>' + months.map(month => `<th>${month}</th>`).join('') + '</tr>';
+
+    tableHeader.innerHTML = '<tr>' + months.map(month => `<th>${month}</th>`).join('') + '</tr>';
+
+    return tableHeader;
 }
