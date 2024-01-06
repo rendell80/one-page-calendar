@@ -1,3 +1,5 @@
+const year = new Date().getFullYear();
+
 document.addEventListener('DOMContentLoaded', function() {
     generateTitle();
     generateMain();
@@ -5,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function generateTitle() {
     const calendarTitle = document.getElementById('calendar-title');
-    const year = new Date().getFullYear();
 
     // TODO: 
     // ✅ get and print current year
@@ -54,12 +55,20 @@ function generateDays() {
         let row = document.createElement('tr');
         for (let month = 1; month <= 12; month++) {
             let dayCell = document.createElement('td');
-            dayCell.textContent = day;
+
+            // Determine the last day of the month
+            let lastDay = new Date(year, month, 0).getDate();
+
+            if (day <= lastDay) {
+                dayCell.textContent = day;
+            } else {
+                dayCell.textContent = '';
+            }
+
             row.appendChild(dayCell)
         }
         tableBody.appendChild(row);
     }
 
     return tableBody;
-
 }
