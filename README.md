@@ -6,6 +6,7 @@ The One-Page Calendar is a simple and printable full year calendar on a single p
 ## Features
 - **Print-Ready Design**: Optimized for a clean printout, fitting perfectly on a single page.
 - **Responsive Layout**: Adapts gracefully to both desktop and mobile screens.
+- **Dynamic Year Selection**: Change the year by modifying the URL parameter.
 - **Easy Integration**: Can be included in existing projects or used as a standalone tool.
 
 ## Installation
@@ -27,7 +28,7 @@ Open the index.html file in any web browser to view the calendar.
 To view the calendar for a specific year, simply append ?year=YYYY to the URL. For example:
 
 ```bash
-http://localhost:999/calendar/?year=2025
+http://localhost:999/one-page-calendar/index.html?year=2025
 ```
 
 ## Contributing

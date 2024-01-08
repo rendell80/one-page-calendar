@@ -3,15 +3,24 @@ document.addEventListener('DOMContentLoaded', function() {
     generateMain();
 });
 
+function getYearFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    let year = params.get('year');
+    if (!year) {
+        year = new Date().getFullYear();
+    }
+    return year;
+}
+
 function generateTitle() {
     const calendarTitle = document.getElementById('calendar-title');
-    const year = new Date().getFullYear();
-    calendarTitle.textContent = 'One Page Calendar - ' + year;
+    const year = getYearFromURL();
+    calendarTitle.textContent = `One-Page Calendar - ${year}`;
 }
 
 function generateMain() {
     const calendarMain = document.getElementById('calendar-table');
-    const year = new Date().getFullYear();
+    const year = getYearFromURL();
     let calendarTable = document.createElement('table');
     let tableHeader = generateHeadings();
     let tableBody = generateTableBody(year);
