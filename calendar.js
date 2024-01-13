@@ -30,9 +30,11 @@ function generateMain() {
 }
 
 function generateHeadings() {
-let tableHeader = document.createElement('thead');
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    tableHeader.innerHTML = '<tr>' + months.map(month => `<th>${month}</th>`).join('') + '</tr>';
+    let tableHeader = document.createElement('thead');
+    let tableRow = document.createElement('tr');
+    tableRow.innerHTML = months.map(month => `<th>${month}</th>`).join('');
+    tableHeader.appendChild(tableRow);
     return tableHeader;
 }
 
