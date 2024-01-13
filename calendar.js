@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function getYearFromURL() {
     const params = new URLSearchParams(window.location.search);
     let year = params.get('year');
-    if (!year) {
+    if (!year || isNaN(year)) {
         year = new Date().getFullYear();
     }
     return year;
@@ -30,7 +30,7 @@ function generateMain() {
 }
 
 function generateHeadings() {
-    let tableHeader = document.createElement('thead');
+let tableHeader = document.createElement('thead');
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     tableHeader.innerHTML = '<tr>' + months.map(month => `<th>${month}</th>`).join('') + '</tr>';
     return tableHeader;
