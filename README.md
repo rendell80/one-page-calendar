@@ -9,6 +9,10 @@ The One-Page Calendar is a simple and printable full year calendar on a single p
 - **Dynamic Year Selection**: Change the year by modifying the URL parameter.
 - **Easy Integration**: Can be included in existing projects or used as a standalone tool.
 
+## Upcoming Features
+- **Important dates**: Display important dates such as public holidays or events on the calendar
+- **Print Icon**: Add a print function directly on the page
+
 ## Installation
 To use the One-Page Calendar, clone the repository to your local machine:
 
